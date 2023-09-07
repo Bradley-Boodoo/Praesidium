@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
               color: Colors.white,
               width: width * 0.25,
               child: const Column(
-                children: [Text("Dashboard")],
+                children: [Text("Dashboarde")],
               ),
             ),
           ],
