@@ -17,7 +17,10 @@ class HomeScreen extends StatelessWidget {
 
     double dashboardWidth = width * 0.25;
     double detailsWidth = width - dashboardWidth;
+
+    double searchbarHeight = 30;
     double searchbarWidth = detailsWidth * 0.4;
+
     double tableColumnWidth = detailsWidth * 0.3;
 
     double whitespaceHeight = 10;
@@ -45,7 +48,10 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     // Projects Header
-                    ProjectsHeader(searchbarWidth: searchbarWidth),
+                    ProjectsHeader(
+                      searchbarHeight: searchbarHeight,
+                      searchbarWidth: searchbarWidth,
+                    ),
 
                     // Space
                     SizedBox(height: whitespaceHeight),
@@ -74,20 +80,17 @@ class HomeScreen extends StatelessWidget {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(
-                                color: Colors.pink,
+                              SizedBox(
                                 width: tableColumnWidth,
                                 child: const Text("Build SAPA"),
                               ),
-                              Container(
-                                color: Colors.white,
+                              SizedBox(
                                 width: tableColumnWidth,
-                                child: Text("11th September 2023"),
+                                child: const Text("11th September 2023"),
                               ),
-                              Container(
-                                color: Colors.green,
+                              SizedBox(
                                 width: tableColumnWidth,
-                                child: Text("20th April 2024"),
+                                child: const Text("20th April 2024"),
                               ),
                             ],
                           );

@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import '../../../theme.dart';
 
 class ProjectsHeader extends StatelessWidget {
-  const ProjectsHeader({super.key, required this.searchbarWidth});
+  const ProjectsHeader({
+    super.key,
+    required this.searchbarHeight,
+    required this.searchbarWidth,
+  });
 
-  final double searchbarWidth;
+  final double searchbarHeight, searchbarWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class ProjectsHeader extends StatelessWidget {
         // Search
         Flexible(
           child: Container(
-            height: 30,
+            height: searchbarHeight,
             width: searchbarWidth,
             decoration: BoxDecoration(
               color: kAccentColor,
