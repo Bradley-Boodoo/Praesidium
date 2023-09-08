@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praesidium/theme.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key, required this.dashboardWidth});
@@ -8,7 +9,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: kAccentColor,
       width: dashboardWidth,
       child: Column(
         children: [

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../theme.dart';
+
 class ProjectsHeader extends StatelessWidget {
-  const ProjectsHeader({
-    super.key,
-    required this.searchbarWidth,
-  });
+  const ProjectsHeader({super.key, required this.searchbarWidth});
 
   final double searchbarWidth;
 
@@ -21,9 +20,10 @@ class ProjectsHeader extends StatelessWidget {
         // Search
         Flexible(
           child: Container(
+            height: 30,
             width: searchbarWidth,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: kAccentColor,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(

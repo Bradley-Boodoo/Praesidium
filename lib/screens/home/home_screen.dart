@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../theme.dart';
 import 'components/dashboard.dart';
 import 'components/projects_header.dart';
 import 'components/table_header.dart';
@@ -16,15 +17,16 @@ class HomeScreen extends StatelessWidget {
 
     double dashboardWidth = width * 0.25;
     double detailsWidth = width - dashboardWidth;
-    double searchbarWidth = detailsWidth * 0.5;
+    double searchbarWidth = detailsWidth * 0.4;
     double tableColumnWidth = detailsWidth * 0.3;
 
     double whitespaceHeight = 10;
 
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       /* APPBAR */
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: kPrimaryColor,
         title: Center(child: Text(title)),
       ),
       body: SizedBox(
@@ -36,9 +38,8 @@ class HomeScreen extends StatelessWidget {
             Dashboard(dashboardWidth: dashboardWidth),
 
             /* PROJECTS */
-            Container(
+            SizedBox(
               width: detailsWidth,
-              color: Colors.blue,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -76,17 +77,17 @@ class HomeScreen extends StatelessWidget {
                               Container(
                                 color: Colors.pink,
                                 width: tableColumnWidth,
-                                child: const Text("Project Name"),
+                                child: const Text("Build SAPA"),
                               ),
                               Container(
                                 color: Colors.white,
                                 width: tableColumnWidth,
-                                child: Text("Start"),
+                                child: Text("11th September 2023"),
                               ),
                               Container(
                                 color: Colors.green,
                                 width: tableColumnWidth,
-                                child: Text("End"),
+                                child: Text("20th April 2024"),
                               ),
                             ],
                           );
