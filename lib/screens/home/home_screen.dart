@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'home_cubit/home_cubit.dart';
 
 import '../../theme.dart';
 import 'components/dashboard.dart';
 import 'components/projects_header.dart';
-import 'components/table_header.dart';
+import 'components/projects_table.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => HomeCubit(),
+      child: const Scaffold(
+        body: HomeBody(),
+      ),
+    );
+  }
+}
+
+class HomeBody extends StatelessWidget {
+  const HomeBody({super.key});
 
   final String title = "Praesidium";
 
@@ -25,85 +42,66 @@ class HomeScreen extends StatelessWidget {
 
     double whitespaceHeight = 10;
 
-    return Scaffold(
-      backgroundColor: kBackgroundColor,
-      /* APPBAR */
-      appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        title: Center(child: Text(title)),
-      ),
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: Row(
-          children: [
-            /* DASHBOARD */
-            Dashboard(dashboardWidth: dashboardWidth),
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: kBackgroundColor,
 
-            /* PROJECTS */
-            SizedBox(
-              width: detailsWidth,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    // Projects Header
-                    ProjectsHeader(
-                      searchbarHeight: searchbarHeight,
-                      searchbarWidth: searchbarWidth,
-                    ),
+          /* APPBAR */
+          appBar: AppBar(
+            backgroundColor: kPrimaryColor,
+            title: Center(child: Text(title)),
+          ),
 
-                    // Space
-                    SizedBox(height: whitespaceHeight),
+          /* BODY */
+          body: SizedBox(
+            height: height,
+            width: width,
+            child: Row(
+              children: [
+                /* DASHBOARD */
+                Dashboard(dashboardWidth: dashboardWidth),
 
-                    // Add New Project
-                    Row(
+                /* PROJECTS */
+                SizedBox(
+                  width: detailsWidth,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
                       children: [
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Add New"),
+                        // Projects Header
+                        ProjectsHeader(
+                          searchbarHeight: searchbarHeight,
+                          searchbarWidth: searchbarWidth,
                         ),
+
+                        // Space
+                        SizedBox(height: whitespaceHeight),
+
+                        // Add New Project
+                        Row(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: const Text("Add New"),
+                            ),
+                          ],
+                        ),
+
+                        // Space
+                        SizedBox(height: whitespaceHeight),
+
+                        // Table
+                        ProjectsTable(tableColumnWidth: tableColumnWidth),
                       ],
                     ),
-
-                    // Space
-                    SizedBox(height: whitespaceHeight),
-
-                    // Table Header
-                    TableHeader(tableColumnWidth: tableColumnWidth),
-
-                    // Table List
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(
-                                width: tableColumnWidth,
-                                child: const Text("Build SAPA"),
-                              ),
-                              SizedBox(
-                                width: tableColumnWidth,
-                                child: const Text("11th September 2023"),
-                              ),
-                              SizedBox(
-                                width: tableColumnWidth,
-                                child: const Text("20th April 2024"),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
