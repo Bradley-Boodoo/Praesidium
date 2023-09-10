@@ -1,11 +1,15 @@
 import 'project_stage_task.dart';
+import 'stage.dart';
 
-class ProjectStage {
-  int stageID;
-  String stageName;
-  int stageRisk;
+class ProjectStage extends Stage {
+  int projectID;
+  // int stageRisk;
 
-  ProjectStage(this.stageID, this.stageName, this.stageRisk);
+  ProjectStage({
+    required this.projectID,
+    required int stageID,
+    required String stageName,
+  }) : super(stageID: stageID, stageName: stageName);
 
   List<ProjectStageTask> _tasks = [];
 
