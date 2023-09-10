@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'home_cubit/home_cubit.dart';
 
-import '../../theme.dart';
-import 'components/dashboard.dart';
 import 'components/projects_header.dart';
 import 'components/projects_table.dart';
 
@@ -44,61 +42,35 @@ class HomeBody extends StatelessWidget {
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        return Scaffold(
-          backgroundColor: kBackgroundColor,
+        return Container(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            children: [
+              // Projects Header
+              ProjectsHeader(
+                searchbarHeight: searchbarHeight,
+                searchbarWidth: searchbarWidth,
+              ),
 
-          /* APPBAR */
-          appBar: AppBar(
-            backgroundColor: kPrimaryColor,
-            title: Center(child: Text(title)),
-          ),
+              // Space
+              SizedBox(height: whitespaceHeight),
 
-          /* BODY */
-          body: SizedBox(
-            height: height,
-            width: width,
-            child: Row(
-              children: [
-                /* DASHBOARD */
-                Dashboard(dashboardWidth: dashboardWidth),
-
-                /* PROJECTS */
-                SizedBox(
-                  width: detailsWidth,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        // Projects Header
-                        ProjectsHeader(
-                          searchbarHeight: searchbarHeight,
-                          searchbarWidth: searchbarWidth,
-                        ),
-
-                        // Space
-                        SizedBox(height: whitespaceHeight),
-
-                        // Add New Project
-                        Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Text("Add New"),
-                            ),
-                          ],
-                        ),
-
-                        // Space
-                        SizedBox(height: whitespaceHeight),
-
-                        // Table
-                        ProjectsTable(tableColumnWidth: tableColumnWidth),
-                      ],
-                    ),
+              // Add New Project
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Add New"),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+
+              // Space
+              SizedBox(height: whitespaceHeight),
+
+              // Table
+              ProjectsTable(tableColumnWidth: tableColumnWidth),
+            ],
           ),
         );
       },
