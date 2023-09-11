@@ -4,13 +4,9 @@ import 'package:praesidium/screens/dashboard/view.dart';
 import 'package:praesidium/screens/home/home_screen.dart';
 
 class NavigationMenu extends StatefulWidget {
-  const NavigationMenu({
-    super.key,
-    required this.selectedIndex,
-  });
+  const NavigationMenu({super.key, required this.selectedIndex});
 
   final int selectedIndex;
-
 
   static final List<Map<String, dynamic>> sitemap = [
     {
@@ -64,10 +60,8 @@ class NavigationMenu extends StatefulWidget {
 class _NavigationMenuState extends State<NavigationMenu> {
   bool isExpanded = false;
 
-
   @override
   Widget build(BuildContext context) {
-
     return NavigationRail(
       // leading: const Placeholder(),
       trailing: Expanded(
@@ -91,16 +85,15 @@ class _NavigationMenuState extends State<NavigationMenu> {
       extended: isExpanded,
       labelType: NavigationRailLabelType.none,
       selectedIndex: widget.selectedIndex,
-      selectedLabelTextStyle:
-      TextStyle(color: Theme.of(context).colorScheme.primary),
-      onDestinationSelected: (index) async{
-        if (index < NavigationMenu.sitemap.length-1){
+
+      onDestinationSelected: (index) async {
+        if (index < NavigationMenu.sitemap.length - 1) {
           Map<String, dynamic> navMap = NavigationMenu.sitemap
               .firstWhere((element) => element['index'] == index);
           context.go(navMap['path']);
         } else {
           final shouldExit = await exitConfirmDialog(context);
-          if (shouldExit!= null && shouldExit==true){
+          if (shouldExit != null && shouldExit == true) {
             debugPrint("LOGOUT");
           }
         }
@@ -108,9 +101,9 @@ class _NavigationMenuState extends State<NavigationMenu> {
       useIndicator: true,
       destinations: NavigationMenu.sitemap
           .map((Map<String, dynamic> e) => NavigationRailDestination(
-        icon: Icon(e['icon'] as IconData?),
-        label: Text(e['label'], textAlign: TextAlign.center),
-      ))
+                icon: Icon(e['icon'] as IconData?),
+                label: Text(e['label'], textAlign: TextAlign.center),
+              ))
           .toList(),
     );
   }
@@ -121,7 +114,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
       builder: (context) => AlertDialog(
         title: const Text('Exit website builder?'),
         content:
-        const Text('Are you sure you want to exit the website builder?'),
+            const Text('Are you sure you want to exit the website builder?'),
         actions: <Widget>[
           TextButton(
             child: const Text('No, stay'),

@@ -13,9 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeCubit(),
-      child: const Scaffold(
-        body: HomeBody(),
-      ),
+      child: const HomeBody(),
     );
   }
 }
@@ -27,7 +25,6 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height - kToolbarHeight;
     double width = MediaQuery.of(context).size.width;
 
     double dashboardWidth = width * 0.25;

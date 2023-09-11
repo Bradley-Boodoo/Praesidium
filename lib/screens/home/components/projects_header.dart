@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme.dart';
-
 class ProjectsHeader extends StatelessWidget {
   const ProjectsHeader({
     super.key,
@@ -27,7 +25,7 @@ class ProjectsHeader extends StatelessWidget {
             height: searchbarHeight,
             width: searchbarWidth,
             decoration: BoxDecoration(
-              color: kAccentColor,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(

@@ -18,14 +18,22 @@ class MyApp extends StatelessWidget {
               .firstWhere((element) => element['path'] == state.fullPath);
           final int siteMapIdx = sitemapPage['index'] ?? 0;
           return Scaffold(
-              appBar: AppBar(
-                title: const Center(child: Text("Praesidium")),
-              ),
-              body: Row(mainAxisSize: MainAxisSize.max, children: [
+            body: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
                 NavigationMenu(selectedIndex: siteMapIdx),
-                const VerticalDivider(width: 2),
-                Expanded(child: child)
-              ]));
+                // const VerticalDivider(width: 2),
+                Expanded(
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: const Text("Praesidium"),
+                    ),
+                    body: child,
+                  ),
+                )
+              ],
+            ),
+          );
         },
         routes: NavigationMenu.sitemap
             .map((Map<String, dynamic> e) => GoRoute(

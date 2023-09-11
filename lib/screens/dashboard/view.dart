@@ -7,6 +7,8 @@ import 'event.dart';
 import 'state.dart';
 
 class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -29,20 +31,24 @@ class DashboardPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Card(
+                        color: Theme.of(context).colorScheme.primary,
                         child: Container(
                           padding: const EdgeInsets.all(24),
                           width: MediaQuery.of(context).size.width / 4,
                           height: 100,
-                          color: Theme.of(context).colorScheme.primary,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 data['dashboard_card'][0]['panel_title'],
                                 style:
-                                    Theme.of(context).textTheme.headlineSmall,
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
-                              Text(data['dashboard_card'][0]['panel_value']),
+                              Text(
+                                data['dashboard_card'][0]['panel_value'],
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
                             ],
                           ),
                         ),
@@ -50,20 +56,24 @@ class DashboardPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: Card(
+                        color: Theme.of(context).colorScheme.secondary,
                         child: Container(
                           padding: const EdgeInsets.all(24),
                           width: MediaQuery.of(context).size.width / 4,
                           height: 100,
-                          color: Theme.of(context).colorScheme.secondary,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 data['dashboard_card'][1]['panel_title'],
                                 style:
-                                    Theme.of(context).textTheme.headlineSmall,
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
-                              Text(data['dashboard_card'][1]['panel_value']),
+                              Text(
+                                data['dashboard_card'][1]['panel_value'],
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
                             ],
                           ),
                         ),
@@ -71,20 +81,24 @@ class DashboardPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: Card(
+                        color: Theme.of(context).colorScheme.tertiary,
                         child: Container(
                           padding: const EdgeInsets.all(24),
                           width: MediaQuery.of(context).size.width / 4,
                           height: 100,
-                          color: Theme.of(context).colorScheme.tertiary,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 data['dashboard_card'][2]['panel_title'],
                                 style:
-                                    Theme.of(context).textTheme.headlineSmall,
+                                    Theme.of(context).textTheme.headlineMedium,
                               ),
-                              Text(data['dashboard_card'][2]['panel_value']),
+                              Text(
+                                data['dashboard_card'][2]['panel_value'],
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
                             ],
                           ),
                         ),

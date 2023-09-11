@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme.dart';
-
 class ProjectsTable extends StatefulWidget {
   final double tableColumnWidth;
 
@@ -23,21 +21,33 @@ class _TableState extends State<ProjectsTable> {
           Container(
             height: 25,
             decoration: BoxDecoration(
-              color: kPrimaryColor,
+              color: Theme.of(context).colorScheme.primary,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                    width: widget.tableColumnWidth,
-                    child: const Text("Project Name")),
+                  width: widget.tableColumnWidth,
+                  child: Text(
+                    "Project Name",
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
                 SizedBox(
-                    width: widget.tableColumnWidth,
-                    child: const Text("Start Date")),
+                  width: widget.tableColumnWidth,
+                  child: Text(
+                    "Start Date",
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
                 SizedBox(
-                    width: widget.tableColumnWidth,
-                    child: const Text("End Date")),
+                  width: widget.tableColumnWidth,
+                  child: Text(
+                    "End Date",
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
               ],
             ),
           ),
@@ -64,8 +74,8 @@ class _TableState extends State<ProjectsTable> {
                       // Hover Styling
                       decoration: BoxDecoration(
                         color: isHoverList[index]
-                            ? kAccentColor
-                            : kBackgroundColor,
+                            ? Theme.of(context).colorScheme.secondary
+                            : Theme.of(context).colorScheme.background,
                         borderRadius: BorderRadius.circular(10),
                       ),
 
