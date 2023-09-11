@@ -52,19 +52,6 @@ class HomeBody extends StatelessWidget {
               // Space
               SizedBox(height: whitespaceHeight),
 
-              // Add New Project
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Add New"),
-                  ),
-                ],
-              ),
-
-              // Space
-              SizedBox(height: whitespaceHeight),
-
               // Table
               ProjectsTable(tableColumnWidth: tableColumnWidth),
             ],

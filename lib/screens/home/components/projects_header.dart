@@ -14,7 +14,13 @@ class ProjectsHeader extends StatelessWidget {
     return Row(
       children: [
         // Title
-        const Text("Project"),
+        Text(
+          "Project",
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .copyWith(color: Colors.black, fontSize: 20),
+        ),
 
         // Space
         const SizedBox(width: 20),
@@ -41,6 +47,11 @@ class ProjectsHeader extends StatelessWidget {
             ),
           ),
         ),
+
+        Expanded(child: Container()), Expanded(child: Container()),
+
+        // Add New Project
+        ElevatedButton(onPressed: () {}, child: const Text("Add New")),
       ],
     );
   }
